@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My First Website</title>
+  <style>
+    :root {
+      --bg-color: #e6f0fa;
+      --card-bg: #ffffff;
+      --heading-color: #1e3a8a;
+      --heading-hover: #172554;
+      --text-muted: #4b5563;
+      --line-color: #1e3a8a;
+      --badge-bg: #dbeafe;
+      --border-light: #cbd5e1;
+      --footer-text: #64748b;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background-color: var(--bg-color);
+      color: #111827;
+      padding: 2.5rem 1.5rem 1.5rem 1.5rem;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: 1.25rem;
+      padding: 3rem 2.5rem;
+      max-width: 600px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 20px 25px -5px rgba(30, 58, 138, 0.08), 0 8px 10px -6px rgba(30, 58, 138, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.8);
+      margin: auto 0;
+    }
+
+    .badge {
+      display: inline-block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--heading-color);
+      background-color: var(--badge-bg);
+      padding: 0.35rem 0.85rem;
+      border-radius: 9999px;
+      margin-bottom: 1.25rem;
+      letter-spacing: 0.025em;
+    }
+
+    h1 {
+      font-size: 42px;
+      font-weight: 700;
+      color: var(--heading-color);
+      letter-spacing: -0.025em;
+      line-height: 1.25;
+      text-align: center;
+    }
+
+    .divider {
+      width: 80px;
+      height: 2px;
+      background-color: var(--line-color);
+      border: none;
+      margin: 1.25rem auto 1.5rem auto;
+      border-radius: 2px;
+    }
+
+    p {
+      font-size: 1.15rem;
+      line-height: 1.7;
+      color: var(--text-muted);
+      text-align: center;
+    }
+
+    .photo-section {
+      margin-top: 2rem;
+    }
+
+    .photo {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+      border-radius: 0.75rem;
+      display: block;
+      margin: 0 auto;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+    }
+
+    .caption {
+      margin-top: 0.75rem;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+
+    .interactive-section {
+      margin-top: 1.75rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .btn {
+      background-color: var(--heading-color);
+      color: #ffffff;
+      padding: 12px 24px;
+      font-size: 1rem;
+      font-weight: 600;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      box-shadow: 0 4px 6px -1px rgba(30, 58, 138, 0.2);
+      transition: background-color 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
+    }
+
+    .btn:hover {
+      background-color: var(--heading-hover);
+      box-shadow: 0 6px 12px -2px rgba(30, 58, 138, 0.3);
+      transform: translateY(-1px);
+    }
+
+    .btn:active {
+      transform: translateY(0);
+      box-shadow: 0 2px 4px -1px rgba(30, 58, 138, 0.2);
+    }
+
+    .hello-msg {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--heading-color);
+      min-height: 1.5rem;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .hello-msg.visible {
+      opacity: 1;
+    }
+
+    .footer {
+      width: 100%;
+      max-width: 600px;
+      margin-top: 2.5rem;
+      padding-bottom: 1.5rem;
+      text-align: center;
+    }
+
+    .footer-divider {
+      border: none;
+      border-top: 1px solid var(--border-light);
+      width: 100%;
+      margin: 0 auto 1.5rem auto;
+    }
+
+    .footer-text {
+      font-size: 0.85rem;
+      color: var(--footer-text);
+      line-height: 1.6;
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <span class="badge">Welcome</span>
+    <h1>Hello, I'm Sultan</h1>
+    <hr class="divider">
+    <p>Building things on the web, one step at a time</p>
+
+    <figure class="photo-section">
+      <img src="https://picsum.photos/id/1067/600/400" alt="Urban architecture" class="photo">
+      <figcaption class="caption">Building my web skills step by step</figcaption>
+    </figure>
+
+    <div class="interactive-section">
+      <button id="helloBtn" class="btn" type="button">Say Hello</button>
+      <p id="helloMsg" class="hello-msg" aria-live="polite"></p>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <hr class="footer-divider">
+    <p class="footer-text">© 2026 — My Web Journey. Built step by step with a little AI help.</p>
+  </footer>
+
+  <script>
+    const helloBtn = document.getElementById('helloBtn');
+    const helloMsg = document.getElementById('helloMsg');
+
+    helloBtn.addEventListener('click', () => {
+      helloMsg.textContent = 'Hello to you too! 👋';
+      helloMsg.classList.add('visible');
+    });
+  </script>
+</body>
+</html>
