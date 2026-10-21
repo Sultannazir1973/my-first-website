@@ -233,6 +233,9 @@
     }
 
     @media (max-width: 440px) {
+      .card {
+        padding: 2rem 1.25rem;
+      }
       .calculator-card {
         padding: 1.75rem 1.25rem;
       }
@@ -242,6 +245,9 @@
       }
       .calc-current {
         font-size: 1.85rem;
+      }
+      .btn-send {
+        width: 100%;
       }
     }
 
@@ -369,6 +375,161 @@
       line-height: 1.6;
       margin: 0;
     }
+
+    /* Contact Form Styles */
+    .contact-card {
+      max-width: 600px;
+    }
+
+    .contact-title {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--heading-color);
+      letter-spacing: -0.025em;
+    }
+
+    .contact-subtitle {
+      font-size: 1rem;
+      color: var(--text-muted);
+      margin-top: -0.5rem;
+      margin-bottom: 2rem;
+      line-height: 1.5;
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      text-align: left;
+      width: 100%;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .form-label {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #334155;
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
+    .required-star {
+      color: #dc2626;
+      font-weight: 700;
+    }
+
+    .form-input,
+    .form-textarea {
+      width: 100%;
+      padding: 0.8rem 1rem;
+      font-size: 1rem;
+      font-family: inherit;
+      color: #0f172a;
+      background-color: #f8fafc;
+      border: 1.5px solid var(--border-light);
+      border-radius: 0.65rem;
+      transition: border-color 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
+      outline: none;
+    }
+
+    .form-input::placeholder,
+    .form-textarea::placeholder {
+      color: #94a3b8;
+    }
+
+    .form-input:focus,
+    .form-textarea:focus {
+      background-color: #ffffff;
+      border-color: #2563eb;
+      box-shadow: 0 0 0 3.5px rgba(37, 99, 235, 0.15);
+    }
+
+    .form-input.is-invalid,
+    .form-textarea.is-invalid {
+      border-color: #ef4444;
+      background-color: #fef2f2;
+    }
+
+    .form-input.is-invalid:focus,
+    .form-textarea.is-invalid:focus {
+      box-shadow: 0 0 0 3.5px rgba(239, 68, 68, 0.15);
+    }
+
+    .field-error {
+      font-size: 0.8rem;
+      color: #dc2626;
+      min-height: 1rem;
+      display: none;
+    }
+
+    .field-error.visible {
+      display: block;
+    }
+
+    .form-textarea {
+      resize: vertical;
+      min-height: 110px;
+      line-height: 1.5;
+    }
+
+    .form-actions {
+      display: flex;
+      justify-content: center;
+      margin-top: 0.5rem;
+    }
+
+    .btn-send {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      padding: 0.85rem 2.25rem;
+      font-size: 1.05rem;
+    }
+
+    .send-icon {
+      transition: transform 0.2s ease;
+    }
+
+    .btn-send:hover .send-icon {
+      transform: translateX(3px) translateY(-1px);
+    }
+
+    .contact-status {
+      display: none;
+      padding: 1rem 1.25rem;
+      border-radius: 0.65rem;
+      font-size: 0.95rem;
+      font-weight: 500;
+      margin-top: 1rem;
+      text-align: center;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .contact-status.success {
+      display: block;
+      background-color: #ecfdf5;
+      color: #065f46;
+      border: 1px solid #a7f3d0;
+    }
+
+    .contact-status.error {
+      display: block;
+      background-color: #fef2f2;
+      color: #991b1b;
+      border: 1px solid #fecaca;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
   </style>
 </head>
 <body>
@@ -433,6 +594,91 @@
 
       <p class="calc-hint">Supports keyboard input (0-9, +, -, *, /, Enter, Esc, ⌫)</p>
     </div>
+  </section>
+
+  <!-- Contact Form Section -->
+  <section class="card contact-card" id="contact" aria-label="Contact Form">
+    <span class="badge">Contact</span>
+    <h2 class="contact-title">Get in Touch</h2>
+    <hr class="divider">
+    <p class="contact-subtitle">Have a question or just want to say hi? Send me a message below!</p>
+
+    <form id="contactForm" class="contact-form" novalidate>
+      <div class="form-group">
+        <label for="contactName" class="form-label">
+          Name <span class="required-star" aria-hidden="true">*</span>
+        </label>
+        <input
+          type="text"
+          id="contactName"
+          name="name"
+          class="form-input"
+          placeholder="Your full name"
+          required
+          autocomplete="name"
+        >
+        <span class="field-error" id="nameError" aria-live="polite"></span>
+      </div>
+
+      <div class="form-group">
+        <label for="contactEmail" class="form-label">
+          Email <span class="required-star" aria-hidden="true">*</span>
+        </label>
+        <input
+          type="email"
+          id="contactEmail"
+          name="email"
+          class="form-input"
+          placeholder="your.email@example.com"
+          required
+          autocomplete="email"
+        >
+        <span class="field-error" id="emailError" aria-live="polite"></span>
+      </div>
+
+      <div class="form-group">
+        <label for="contactAddress" class="form-label">
+          Address <span class="required-star" aria-hidden="true">*</span>
+        </label>
+        <input
+          type="text"
+          id="contactAddress"
+          name="address"
+          class="form-input"
+          placeholder="Street address, city, or postal code"
+          required
+          autocomplete="street-address"
+        >
+        <span class="field-error" id="addressError" aria-live="polite"></span>
+      </div>
+
+      <div class="form-group">
+        <label for="contactMessage" class="form-label">
+          Message <span class="required-star" aria-hidden="true">*</span>
+        </label>
+        <textarea
+          id="contactMessage"
+          name="message"
+          class="form-textarea"
+          rows="4"
+          placeholder="Write your message here..."
+          required
+        ></textarea>
+        <span class="field-error" id="messageError" aria-live="polite"></span>
+      </div>
+
+      <div class="form-actions">
+        <button type="submit" class="btn btn-send" id="sendBtn">
+          <span>Send Message</span>
+          <svg class="send-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="22" y1="2" x2="11" y2="13"></line>
+            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+          </svg>
+        </button>
+      </div>
+
+      <div id="contactStatus" class="contact-status" role="alert" aria-live="polite"></div>
+    </form>
   </section>
 
   <footer class="footer">
@@ -745,6 +991,136 @@
       });
 
       updateDisplay();
+    })();
+
+    // Contact Form Logic
+    (function initContactForm() {
+      const form = document.getElementById('contactForm');
+      const nameInput = document.getElementById('contactName');
+      const emailInput = document.getElementById('contactEmail');
+      const addressInput = document.getElementById('contactAddress');
+      const messageInput = document.getElementById('contactMessage');
+      const sendBtn = document.getElementById('sendBtn');
+      const statusDiv = document.getElementById('contactStatus');
+
+      const nameError = document.getElementById('nameError');
+      const emailError = document.getElementById('emailError');
+      const addressError = document.getElementById('addressError');
+      const messageError = document.getElementById('messageError');
+
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+      function clearError(input, errorEl) {
+        input.classList.remove('is-invalid');
+        errorEl.textContent = '';
+        errorEl.classList.remove('visible');
+      }
+
+      function setError(input, errorEl, message) {
+        input.classList.add('is-invalid');
+        errorEl.textContent = message;
+        errorEl.classList.add('visible');
+      }
+
+      // Live validation clearing on input
+      [
+        { input: nameInput, error: nameError },
+        { input: emailInput, error: emailError },
+        { input: addressInput, error: addressError },
+        { input: messageInput, error: messageError }
+      ].forEach(({ input, error }) => {
+        input.addEventListener('input', () => {
+          if (input.classList.contains('is-invalid')) {
+            clearError(input, error);
+          }
+          if (statusDiv.classList.contains('error')) {
+            statusDiv.className = 'contact-status';
+            statusDiv.textContent = '';
+          }
+        });
+      });
+
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        let isValid = true;
+        let firstInvalidInput = null;
+
+        // Validate Name
+        const nameVal = nameInput.value.trim();
+        if (!nameVal) {
+          setError(nameInput, nameError, 'Please enter your name.');
+          isValid = false;
+          firstInvalidInput = firstInvalidInput || nameInput;
+        } else {
+          clearError(nameInput, nameError);
+        }
+
+        // Validate Email
+        const emailVal = emailInput.value.trim();
+        if (!emailVal) {
+          setError(emailInput, emailError, 'Please enter your email address.');
+          isValid = false;
+          firstInvalidInput = firstInvalidInput || emailInput;
+        } else if (!emailRegex.test(emailVal)) {
+          setError(emailInput, emailError, 'Please enter a valid email address.');
+          isValid = false;
+          firstInvalidInput = firstInvalidInput || emailInput;
+        } else {
+          clearError(emailInput, emailError);
+        }
+
+        // Validate Address
+        const addressVal = addressInput.value.trim();
+        if (!addressVal) {
+          setError(addressInput, addressError, 'Please enter your address.');
+          isValid = false;
+          firstInvalidInput = firstInvalidInput || addressInput;
+        } else {
+          clearError(addressInput, addressError);
+        }
+
+        // Validate Message
+        const messageVal = messageInput.value.trim();
+        if (!messageVal) {
+          setError(messageInput, messageError, 'Please write a message.');
+          isValid = false;
+          firstInvalidInput = firstInvalidInput || messageInput;
+        } else {
+          clearError(messageInput, messageError);
+        }
+
+        if (!isValid) {
+          if (firstInvalidInput) {
+            firstInvalidInput.focus();
+          }
+          statusDiv.className = 'contact-status error';
+          statusDiv.textContent = 'Please fill out all required fields correctly.';
+          return;
+        }
+
+        // Simulate sending
+        sendBtn.disabled = true;
+        const originalBtnContent = sendBtn.innerHTML;
+        sendBtn.innerHTML = '<span>Sending...</span>';
+
+        setTimeout(() => {
+          sendBtn.disabled = false;
+          sendBtn.innerHTML = originalBtnContent;
+
+          // Success notification
+          statusDiv.className = 'contact-status success';
+          statusDiv.innerHTML = `<strong>Thank you, ${escapeHtml(nameVal)}!</strong> Your message has been sent successfully. We'll be in touch soon.`;
+
+          form.reset();
+        }, 600);
+      });
+
+      function escapeHtml(text) {
+        const div = document.createElement('div');
+        div.textContent = text;
+        return div.innerHTML;
+      }
     })();
   </script>
 </body>
